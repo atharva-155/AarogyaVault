@@ -12,7 +12,7 @@ export default function AgentLogin() {
     if (!form.employee_id || !form.password) { setError('All fields required'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('/api/agent/login', {
+      const res = await fetch('https://aarogyavault.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
