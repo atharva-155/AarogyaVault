@@ -53,7 +53,7 @@ export default function CitizenRegister({ agentMode = false, agentId = null, onS
       const payload = { ...form, registered_by: agentId || 'self' };
       delete payload.faceImage; // don't send image in registration payload
 
-      const res = await fetch('/api/citizen/register', {
+      const res = await fetch('https://aarogyavault.onrender.com/api/citizen/register', {
         method: 'POST',
         headers,
         body: JSON.stringify(payload)
