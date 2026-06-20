@@ -63,7 +63,7 @@ export default function CitizenRegister({ agentMode = false, agentId = null, onS
 
       // Upload face image separately
       if (form.faceImage && data.vault_id) {
-        await fetch(`/api/citizen/upload-face/${data.vault_id}`, {
+        await fetch(`https://aarogyavault.onrender.com/api/citizen/upload-face/${data.vault_id}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ image: form.faceImage })

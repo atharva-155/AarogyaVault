@@ -23,7 +23,7 @@ export default function AgentDashboard() {
 
   const loadRecent = useCallback(async () => {
     try {
-      const res = await fetch('/api/lookups/recent', {
+      const res = await fetch('https://aarogyavault.onrender.com/api/lookups/recent', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) setRecentLookups(await res.json());
@@ -32,7 +32,7 @@ export default function AgentDashboard() {
 
   const loadAllCitizens = useCallback(async () => {
     try {
-      const res = await fetch('/api/citizens/all');
+      const res = await fetch('https://aarogyavault.onrender.com/api/citizens/all');
       if (res.ok) setAllCitizens(await res.json());
     } catch {}
   }, []);
@@ -45,7 +45,7 @@ export default function AgentDashboard() {
     setLookupLoading(true); setLookupError(''); setLookupResult(null); setLookupResults([]);
     try {
       const param = searchType === 'aadhaar' ? `aadhaar=${searchQuery}` : `name=${searchQuery}`;
-      const res = await fetch(`/api/citizen/lookup?${param}`, {
+      const res = await fetch(`https://aarogyavault.onrender.com/api/citizen/lookup?${param}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -55,7 +55,7 @@ export default function AgentDashboard() {
         setLookupResults(data);
       } else {
         setLookupResult(data);
-        await fetch('/api/lookup/log', {
+        await fetch('https://aarogyavault.onrender.com/api/lookup/log', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
           body: JSON.stringify({ citizen_id: data.id, reason: reason || 'Emergency lookup' })
@@ -72,7 +72,7 @@ export default function AgentDashboard() {
   async function selectCitizen(c) {
     setLookupResult(c);
     setLookupResults([]);
-    await fetch('/api/lookup/log', {
+    await fetch('https://aarogyavault.onrender.com/api/lookup/log', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ citizen_id: c.id, reason: reason || 'Emergency lookup' })

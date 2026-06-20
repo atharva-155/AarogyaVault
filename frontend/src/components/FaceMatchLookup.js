@@ -55,7 +55,7 @@ export default function FaceMatchLookup() {
       const token = localStorage.getItem('agent_token');
       const headers = { 'Content-Type': 'application/json' };
       if (token) headers['Authorization'] = `Bearer ${token}`;
-      const res = await fetch('/api/face-match', {
+      const res = await fetch('https://aarogyavault.onrender.com/api/face-match', {
         method: 'POST',
         headers,
         body: JSON.stringify({ image })

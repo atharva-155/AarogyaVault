@@ -14,7 +14,7 @@ export default function EmergencyLookup() {
     if (!aadhaar || aadhaar.length !== 12) { setError('Enter a valid 12-digit Aadhaar number'); return; }
     setLoading(true); setError(''); setResult(null);
     try {
-      const res = await fetch(`/api/citizen/lookup/public?aadhaar=${aadhaar}`);
+      const res = await fetch(`https://aarogyavault.onrender.com/api/citizen/lookup/public?aadhaar=${aadhaar}`);
       const data = await res.json();
       if (!res.ok) { setError(data.error || 'No record found'); return; }
       setResult(data);

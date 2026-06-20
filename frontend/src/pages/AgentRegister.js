@@ -32,7 +32,7 @@ export default function AgentRegister() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true); setApiError('');
     try {
-      const res = await fetch('/api/agent/register', {
+      const res = await fetch('https://aarogyavault.onrender.com/api/agent/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)

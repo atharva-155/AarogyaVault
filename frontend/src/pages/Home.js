@@ -6,7 +6,7 @@ export default function Home() {
   const [stats, setStats] = useState({ citizens: 6, agents: 2 });
 
   useEffect(() => {
-    fetch('/api/stats')
+    fetch('https://aarogyavault.onrender.com/api/stats')
       .then(r => r.json())
       .then(d => setStats(d))
       .catch(() => {});
